@@ -1,0 +1,24 @@
+# Maintainer: Steven Medley <smedley76[at]live[dot]com>
+
+pkgname=dukelinux-keyring
+pkgver=20260216
+pkgrel=1
+pkgdesc="dukelinux PGP keyring"
+arch=('any')
+url="https://github.com/dukelinux/dukelinux-keyring"
+license=('GPL-3.0-or-later')
+depends=('pacman')
+install="${pkgname}.install"
+source=('https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/Makefile'
+        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux.gpg'
+        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-revoked'
+        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-trusted')
+
+sha256sums=()
+
+pkgver() {
+  date +%Y%m%d
+}
+
+package() {
+  make DESTDIR="${pkgdir}" install
