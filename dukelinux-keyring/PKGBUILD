@@ -22,3 +22,4 @@ pkgver() {
 
 package() {
   make DESTDIR="${pkgdir}" install
+}
