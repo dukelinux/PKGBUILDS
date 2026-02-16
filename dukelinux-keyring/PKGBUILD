@@ -14,7 +14,10 @@ source=('https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/Make
         'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-revoked'
         'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-trusted')
 
-sha256sums=()
+sha256sums=('30201d1deadb91fe24e7f8c4e2613b86937d7a8131b4c72fe4a0996e8cbbe834'
+            '16bd560516759700a9505b73286b99b6515fd2de39a01f823869a878c1d853df'
+            '01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b'
+            'e296939fae30835be796e89226d832994a0deac492d48c5696909f225cc3b1ed')
 
 pkgver() {
   date +%Y%m%d
