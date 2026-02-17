@@ -1,28 +1,23 @@
 # Maintainer: Steven Medley <smedley76[at]live[dot]com>
 
 pkgname=dukelinux-keyring
-pkgver=20260216
+pkgver=1
 pkgrel=1
 pkgdesc="dukelinux PGP keyring"
 arch=('any')
 url="https://github.com/dukelinux/dukelinux-keyring"
 license=('GPL-3.0-or-later')
 depends=('pacman')
+makedepends=('git')
 install="${pkgname}.install"
-source=('https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/Makefile'
-        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux.gpg'
-        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-revoked'
-        'https://raw.githubusercontent.com/dukelinux/dukelinux-keyring/main/dukelinux-trusted')
-
-sha256sums=('30201d1deadb91fe24e7f8c4e2613b86937d7a8131b4c72fe4a0996e8cbbe834'
-            '16bd560516759700a9505b73286b99b6515fd2de39a01f823869a878c1d853df'
-            '01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b'
-            'e296939fae30835be796e89226d832994a0deac492d48c5696909f225cc3b1ed')
-
+source=('git+https://github.com/dukelinux/dukelinux-keyring.git')
+sha256sums=('SKIP')
 pkgver() {
-  date +%Y%m%d
+  cd "$srcdir/dukelinux-keyring"
+  git log -1 --format=%cd --date=format:%Y%m%d
 }
 
 package() {
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/dukelinux-keyring"
+  make DESTDIR="$pkgdir" install
 }
